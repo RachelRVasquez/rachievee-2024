@@ -1,0 +1,91 @@
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Column width with margin
+@mixin column-width($numberColumns: 3) {
+	width: map-get($columns, $numberColumns) - (($columns__margin * ($numberColumns - 1)) / $numberColumns );
+}
+
+/* RESPONSIVE ---------------- */
+
+@mixin tablet-up {
+	@media (min-width: map-get($grid-breakpoints, md)) {
+		@content;
+	}
+}
+
+@mixin large-up {
+	@media (min-width: map-get($grid-breakpoints, lg)) {
+		@content;
+	}
+}
+
+/* VISUAL ---------------- */
+
+@mixin linear-gradient() {
+	background: linear-gradient(180deg, rgba(22, 22, 22, 1) 15%, rgba(42, 42, 42, 1) 100%);
+}
+
+@mixin header-blurb-gradient($color1, $color2 ) {
+	color: $color2;
+	background-image: -webkit-linear-gradient(90deg, $color1 0%, $color2 60%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	text-fill-color: transparent;
+	-webkit-text-fill-color: transparent;
+
+
+}
+
+/* UTILITIES  ---------------- */
+
+@mixin remove-btn-defaults() {
+	padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+}
+
+@mixin clearfix() {
+
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin absoluteHorizontalCenter() {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+@mixin absoluteXYCenter() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+//borrowed from _accessibility.scss
+@mixin screen-reader-only {
+		border: 0;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute !important;
+		width: 1px;
+		word-wrap: normal !important; // Many screen reader and browser combinations announce broken words as they would appear visually.
+}
