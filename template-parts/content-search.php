@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying results in search pages
  *
@@ -11,25 +12,20 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+		<?php the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>'); ?>
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php
-			rachievee_2024_posted_on();
-			rachievee_2024_posted_by();
-			?>
-		</div><!-- .entry-meta -->
+		<?php if ('post' === get_post_type()) : ?>
+			<div class="entry-meta">
+				<?php rachievee_2024_posted_on(); ?>
+			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php rachievee_2024_post_thumbnail(); ?>
-
 	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
+		<?php echo wp_trim_words(get_the_excerpt(), 50); ?>
 
-	<footer class="entry-footer">
-		<?php rachievee_2024_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+		<a href="<?php echo esc_url(get_permalink()); ?>" rel="bookmark" title="" class="read-more">
+			<?php esc_html_e('Read More', 'rachievee2024'); ?> <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
+		</a>
+	</div><!-- .entry-summary -->
 </article><!-- #post-<?php the_ID(); ?> -->

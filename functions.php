@@ -55,7 +55,7 @@ function rachievee_2024_setup()
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'rachievee-2024'), //main menu
-			'menu-2' => esc_html__('Secondary', 'rachievee-2024'), //social icons header
+			// 'menu-2' => esc_html__('Secondary', 'rachievee-2024'), //social icons header
 		)
 	);
 
@@ -149,6 +149,8 @@ function rachievee_2024_scripts()
 {
 	wp_register_style('google-fonts', 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Oleo+Script+Swash+Caps:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap', array(), null);
 	wp_enqueue_style('google-fonts');
+
+    wp_enqueue_style( 'rachievee-2024-font-awesome', get_template_directory_uri() . '/assets/font-awesome/css/all.min.css' );
 
 	wp_enqueue_style('rachievee-2024-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('rachievee-2024-style', 'rtl', 'replace');

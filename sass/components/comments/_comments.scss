@@ -5,3 +5,28 @@
 .bypostauthor {
 	display: block;
 }
+
+.comments-area {
+	background-color: $color__background-header;
+	padding: 15px 30px;
+
+	li.comment,
+	li.pingback {
+		margin-top: 15px;
+
+		article {
+			border: 1px solid lighten( $color__background-body, 10% );
+			padding: 15px;
+		}
+
+		.children {
+			margin-top: 15px;
+		}
+
+		.avatar {
+			border-radius: 100%;
+		}
+	}
+}
+
+	

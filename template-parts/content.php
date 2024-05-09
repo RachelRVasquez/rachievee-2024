@@ -20,12 +20,12 @@
 				<div class="entry-meta">
 					<?php rachievee_2024_posted_on(); ?>
 
-					<?php rachievee_2024_entry_footer(); ?>
+					<?php rachievee_2024_entry_comment(); ?>
 				</div><!-- .entry-meta -->
 			<?php endif;
 
 			if (is_singular()) :
-				the_title('<h2 class="entry-title">', '</h1>');
+				the_title('<h1 class="entry-title">', '</h1>');
 			else :
 				the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
 			endif; ?>
@@ -55,8 +55,9 @@
 					</div>
 				<?php endif; ?>
 
-				 <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark" title=""
-                        class="read-more"><?php esc_html_e( 'Read More', 'rachievee2024' ); ?></a>
+				<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark" title=""class="read-more">
+					<?php esc_html_e( 'Read More', 'rachievee2024' ); ?> <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
+				</a>
 				
 				
 			
@@ -75,15 +76,7 @@
 						wp_kses_post(get_the_title())
 					)
 				);
-			}
-			
-			wp_link_pages(
-				array(
-					'before' => '<div class="page-links">' . esc_html__('Pages:', 'rachievee-2024'),
-					'after'  => '</div>',
-				)
-			);
-			?>
+			} ?>
 		</div><!-- .entry-content -->
 	</div>
 </article><!-- #post-<?php the_ID(); ?> -->

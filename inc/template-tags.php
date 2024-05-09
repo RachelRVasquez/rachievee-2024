@@ -28,7 +28,7 @@ if ( ! function_exists( 'rachievee_2024_posted_on' ) ) :
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
 			esc_html_x( '%s', 'post date', 'rachievee-2024' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><i class="fa-solid fa-calendar-days date-icon" aria-hidden="true"></i> ' . $time_string . '</a>'
 		);
 
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -52,13 +52,13 @@ if ( ! function_exists( 'rachievee_2024_posted_by' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'rachievee_2024_entry_footer' ) ) :
+if ( ! function_exists( 'rachievee_2024_entry_comment' ) ) :
 	/**
-	 * Prints HTML with meta information for the categories, tags and comments.
+	 * Prints HTML with comments.
 	 */
-	function rachievee_2024_entry_footer() {
+	function rachievee_2024_entry_comment() {
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
+			echo '<span class="comments-link"><i class="fa-regular fa-comment comments-icon"></i>';
 			comments_popup_link(
 				sprintf(
 					wp_kses(
@@ -75,23 +75,6 @@ if ( ! function_exists( 'rachievee_2024_entry_footer' ) ) :
 			);
 			echo '</span>';
 		}
-
-		// edit_post_link(
-		// 	sprintf(
-		// 		wp_kses(
-		// 			/* translators: %s: Name of current post. Only visible to screen readers */
-		// 			__( 'Edit <span class="screen-reader-text">%s</span>', 'rachievee-2024' ),
-		// 			array(
-		// 				'span' => array(
-		// 					'class' => array(),
-		// 				),
-		// 			)
-		// 		),
-		// 		wp_kses_post( get_the_title() )
-		// 	),
-		// 	'<span class="edit-link">',
-		// 	'</span>'
-		// );
 	}
 endif;
 

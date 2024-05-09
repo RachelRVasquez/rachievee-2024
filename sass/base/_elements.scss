@@ -7,24 +7,20 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
 	border: 1px solid;
-	border-color: $color__border-button;
+	border: none;
 	border-radius: 3px;
 	background: $color__background-button;
-	color: rgba(0, 0, 0, 0.8);
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: $color__text-secondary;
 	line-height: 1;
-	padding: 0.6em 1em 0.4em;
+	padding: 0.6em 1em;
 	
 	&:hover, &:active, &:focus {
 		transition: all .3s ease-in-out;
-	}
-	
-	&:hover {
-		border-color: $color__border-button-hover;
-	}
-
-	&:active,
-	&:focus {
-		border-color: $color__border-button-focus;
+		background: $color__border-button-hover;
+		box-shadow: 1px 2px 20px $color__background-button;
 	}
 }
 
@@ -47,7 +43,7 @@ textarea {
 	color: $color__text-input;
 	border: 1px solid $color__border-input;
 	border-radius: 3px;
-	padding: 3px;
+	padding: 4px;
 
 	&:focus {
 		color: $color__text-input-focus;
@@ -99,6 +95,7 @@ a {
 ul,
 ol {
 	margin: 0 0 1.5em 3em;
+	padding: 0;
 }
 
 ul {

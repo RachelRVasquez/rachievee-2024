@@ -1,0 +1,66 @@
+/* Footer ---------------- */
+
+.site-footer {
+	position: relative;
+	background: $color__background-footer;
+	min-height: 300px;
+
+	.custom-shape-divider-bottom {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		overflow: hidden;
+		line-height: 0;
+	}
+
+	.shape-fill {
+		fill: $color__background-body;
+	}
+
+	.container {
+		max-width: $size__site-width;
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 8rem 0 2rem;
+	}
+
+
+	.site-info {
+		font-weight: bold;
+
+		a {
+			&:hover, &:active, &:focus {
+				color: $color__link;
+			}
+		}
+	}
+
+	a {
+		color: $color__text-main;
+	}
+
+	ul.menu {
+		list-style: none;
+		margin: 2rem 0 0;
+		display: flex;
+
+		li {
+			padding: 0 .8rem;
+
+			a {
+				font-size: .9rem;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				@include underline-effect(1px, $color__text-main);
+	
+				&:hover, &:active, &:focus {
+					@include underline-effect-hover(1px);
+				}
+			}
+		}
+	}
+}

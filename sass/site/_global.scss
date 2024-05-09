@@ -1,0 +1,18 @@
+/* Global Layout ---------------- */
+
+.site-main,
+.widget-area,
+.site-header,
+.site-footer {
+	padding: 0 1rem;
+}
+
+.site-main,
+.widget-area {
+	margin-top: 2rem;
+}
+
+.skip-link {
+	color: $color__text-secondary;
+}
+

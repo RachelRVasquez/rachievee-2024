@@ -14,9 +14,18 @@
  */
 
 get_header();
-?>
 
-<?php if (is_home()) {
+if ( is_home() ) { ?>
+
+<div class="site-homepage-hero">
+	<h2 class="hero-heading"><span>Hello,</span> I'm Rachel!</h2>
+	<div class="hero-subtitle">Full-Stack Developer & WordPress Wizard</div>
+	<div class="hero-blurb">I write about accessibility, tutorials, and dev life.</div>
+</div>
+
+<?php } ?>
+
+<?php /* if (is_home()) {
 	$fetch_hero_title = get_option('_homepage_hero_title') ?: '';
 	$fetch_hero_subtitle = get_option('_homepage_hero_subtitle') ?: '';
 	$fetch_hero_blurb = get_option('_homepage_hero_desc') ?: '';
@@ -31,19 +40,11 @@ get_header();
 		</div>
 <?php } 
 
-} ?>
+} */ ?>
 
 <main id="primary" class="site-main">
 	<?php
 	if (have_posts()) :
-
-		if (is_home() && !is_front_page()) :
-	?>
-			<header>
-				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-			</header>
-	<?php
-		endif;
 
 		/* Start the Loop */
 		while (have_posts()) :
@@ -58,7 +59,10 @@ get_header();
 
 		endwhile;
 
-		the_posts_navigation();
+		the_posts_navigation(array(
+			'prev_text' => '<i class="fa-solid fa-angles-left" aria-hidden="true"></i> Older Articles',
+			'next_text' => 'Newer Articles <i class="fa-solid fa-angles-right" aria-hidden="true"></i>',
+		));
 
 	else :
 

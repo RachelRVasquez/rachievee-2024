@@ -35,7 +35,10 @@ get_header();
 
 			endwhile;
 
-			the_posts_navigation();
+			the_posts_navigation(array(
+				'prev_text' => '<i class="fa-solid fa-angles-left" aria-hidden="true"></i> Older Articles',
+				'next_text' => 'Newer Articles <i class="fa-solid fa-angles-right" aria-hidden="true"></i>',
+			));
 
 		else :
 

@@ -3,17 +3,32 @@
 	grid-template-columns: ($size__site-sidebar) auto;
 	grid-template-areas:
 		"header header"
-		"sidebar main"
+		"blurb blurb"
+		"main main"
+		"sidebar sidebar"
 		"footer footer";
+
+	@include tablet-up {
+		grid-template-areas:
+			"header header"
+			"blurb blurb"
+			"sidebar main"
+			"footer footer";
+	}
 }
 
 .site-header {
 	grid-area: header;
 }
 
+.site-homepage-hero {
+	grid-area: blurb;
+}
+
 .site-main {
 	grid-area: main;
-	overflow: hidden; /* Resolves issue with <pre> elements forcing full width. */
+	overflow: hidden;
+	/* Resolves issue with <pre> elements forcing full width. */
 }
 
 .widget-area {
@@ -23,5 +38,3 @@
 .site-footer {
 	grid-area: footer;
 }
-
-@import "no-sidebar";

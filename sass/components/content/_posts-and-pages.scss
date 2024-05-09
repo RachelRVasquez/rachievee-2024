@@ -2,11 +2,6 @@
 	display: block;
 }
 
-.post,
-.page {
-	margin: 0 0 1.5em;
-}
-
 .updated:not(.published) {
 	display: none;
 }
@@ -17,7 +12,175 @@
 	margin: 1.5em 0 0;
 }
 
+.entry-summary {
+	padding-left: 1rem;
+}
+
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+/* Post Loop ---------------- */
+
+.home,
+.archive {
+	.post {
+		@include tablet-up {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: nowrap;
+		}
+
+		.post-thumbnail {
+			@include tablet-up {
+				width: 45%;
+			}
+
+
+			img {
+				margin-bottom: 2rem;
+				width: 100%;
+			}
+		}
+
+		.entry-content-wrapper {
+			@include tablet-up {
+				width: 65%;
+			}
+		}
+	}
+}
+
+.single {
+	.post {
+		.post-thumbnail {
+			display: none;
+		}
+	}
+}
+
+.post {
+	margin-bottom: 6rem;
+
+	.entry-title,
+	.entry-meta,
+	.entry-content,
+	.entry-footer {
+		padding: 0 1rem;
+	}
+
+	.entry-meta {
+		.comments-link {
+			.comments-icon {
+				padding-right: 7px;
+				color: $color__link;
+			}
+
+			&:hover,
+			&:active,
+			&:focus {
+				.comments-icon {
+					color: $color__link-hover;
+				}
+			}
+		}
+
+		.date-icon {
+			padding-right: 2px;
+		}
+	}
+
+	.entry-title {
+		font-size: 32px;
+		line-height: 38px;
+
+		a {
+			color: $color__post-title;
+			@include underline-effect(2px, $color__post-title);
+
+			&:hover,
+			&:active,
+			&:focus {
+				@include underline-effect-hover(2px);
+			}
+		}
+	}
+
+	.entry-content {
+
+		p>a,
+		li>a {
+			text-decoration: underline;
+		}
+
+		blockquote {
+			border-left: 2px solid $color__post-title;
+			background: $color__background-blockquote;
+			padding: 1em 1.5em;
+			font-size: 1.1rem;
+		}
+
+		.category,
+		.tags {
+			a {
+				color: $color__link-meta;
+
+				&:after {
+					content: "";
+					background-color: $color__link-meta;
+					height: 3px;
+					width: 3px;
+					display: inline-block;
+					vertical-align: middle;
+					margin-left: 0.35rem;
+					border-radius: 50%;
+				}
+
+				&:hover,
+				&:active,
+				&:focus {
+					color: $color__link-meta-hover;
+				}
+
+				&:last-child {
+					&::after {
+						background-color: transparent;
+					}
+				}
+			}
+		}
+
+		.category {
+			margin-bottom: 1.4rem;
+		}
+
+		.tags {
+			margin-top: 1.4rem;
+			margin-bottom: 2rem;
+		}
+	}
+
+	.entry-meta,
+	.read-more {
+		font-size: .9rem;
+		text-transform: uppercase;
+	}
+
+	.entry-meta {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.read-more {
+		margin-top: 2rem;
+		color: $color__read-more;
+		@include underline-effect(1px, $color__read-more);
+
+		&:hover,
+		&:active,
+		&:focus {
+			@include underline-effect-hover(1px);
+		}
+	}
 }

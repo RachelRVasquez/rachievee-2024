@@ -30,20 +30,16 @@
 			<div class="site-branding">
 				<?php
 				the_custom_logo();
-				if (is_front_page() && is_home()) :
-				?>
-					<div class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></div>
-				<?php
-				else :
-				?>
+
+				if ( is_front_page() && is_home() ) : ?>
+					<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
+				<?php else : ?>
 					<p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
-				<?php
-				endif;
+				<?php endif;
+
 				$rachievee_2024_description = get_bloginfo('description', 'display');
-				if ($rachievee_2024_description || is_customize_preview()) :
-				?>
-					<p class="site-description"><?php echo $rachievee_2024_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-												?></p>
+				if ($rachievee_2024_description || is_customize_preview()) : ?>
+					<p class="site-description"><?php echo $rachievee_2024_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 
@@ -58,21 +54,7 @@
 				);
 				?>
 			</nav><!-- #site-navigation -->
-			<nav id="social-navigation" class="social-navigation">
-				<ul>
-					<li>
-						<a href="https://twitter.com/RachelRVasquez" class="dashicons dashicons-twitter">
-							<span class="screen-reader-text">Twitter</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://www.linkedin.com/in/rachelrvasquez/" class="dashicons dashicons-linkedin">
-							<span class="screen-reader-text">LinkedIn</span>
-						</a>
-					</li>
-					<!-- Add Stack Exchange & Github -->
-				</ul>
-			</nav><!-- social-navigation TODO: Make dynamic, carbon fields bc screw wp menus -->
+			<?php rachievee_2024_social_icons_output(); ?>
 			</div>
 		</header><!-- #masthead -->
 	<div id="page" class="site">

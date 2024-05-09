@@ -26,19 +26,25 @@
 
 /* VISUAL ---------------- */
 
-@mixin linear-gradient() {
-	background: linear-gradient(180deg, rgba(22, 22, 22, 1) 15%, rgba(42, 42, 42, 1) 100%);
+@mixin transition {
+	transition: all .3s ease-in-out;
 }
 
-@mixin header-blurb-gradient($color1, $color2 ) {
+@mixin linear-gradient( $color1, $color2 ) {
 	color: $color2;
-	background-image: -webkit-linear-gradient(90deg, $color1 0%, $color2 60%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	text-fill-color: transparent;
-	-webkit-text-fill-color: transparent;
+	background: linear-gradient( 0deg, $color1 0%, $color2 45% );
+}
 
+@mixin underline-effect ( $height, $bgcolor ) {
+	@include transition;
+	@include linear-gradient( $bgcolor, $bgcolor );
+	background-position: 0 100%;
+	background-size: 0 $height;
+	background-repeat: no-repeat;
+}
 
+@mixin underline-effect-hover ( $height ) {
+	background-size: 100% $height;
 }
 
 /* UTILITIES  ---------------- */
@@ -51,7 +57,6 @@
 }
 
 @mixin clearfix() {
-
 	&:before,
 	&:after {
 		content: " ";
