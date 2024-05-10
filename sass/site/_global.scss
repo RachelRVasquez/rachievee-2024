@@ -1,5 +1,15 @@
 /* Global Layout ---------------- */
 
+.site {
+	.skip-link {
+		color: $color__text-secondary;
+	
+		&:hover, &:focus, &:active {
+			color: $color__text-secondary;
+		}
+	}
+}
+
 .site-main,
 .widget-area,
 .site-header,
@@ -11,11 +21,6 @@
 .widget-area {
 	margin-top: 2rem;
 }
-
-.skip-link {
-	color: $color__text-secondary;
-}
-
 
 .desktop-hidden {
 	@include tablet-up {

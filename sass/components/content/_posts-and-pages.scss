@@ -67,7 +67,9 @@
 	.entry-meta,
 	.entry-content,
 	.entry-footer {
-		padding: 0 1rem;
+		@include tablet-up {
+			padding: 0 1rem;
+		}
 	}
 
 	.entry-meta {

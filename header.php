@@ -36,13 +36,13 @@
 				<p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
-		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+		<button class="menu-toggle" id="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 			<div class="ham-bar top" aria-hidden="true"></div>
 			<div class="ham-bar middle" aria-hidden="true"></div>
 			<div class="ham-bar bottom" aria-hidden="true"></div>
 			<span class="screen-reader-text"><?php esc_html_e('Primary Menu', 'rachievee-2024'); ?></span>
 		</button>
-		<div class="container off-screen-mobile">
+		<div class="container off-screen-mobile" id="mobile-menu">
 			<div class="site-branding mobile-hidden">
 				<?php
 				the_custom_logo();
@@ -59,7 +59,7 @@
 				wp_nav_menu(
 					array(
 						'theme_location' => 'menu-1',
-						'menu_id'        => 'primary-menu',
+				'menu_id'        => 'primary-menu',	
 					)
 				);
 				?>
@@ -69,3 +69,4 @@
 	</header><!-- #masthead -->
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'rachievee-2024'); ?></a>
+		<a class="skip-link screen-reader-text" href="#secondary"><?php esc_html_e('Skip to sidebar', 'rachievee-2024'); ?></a>

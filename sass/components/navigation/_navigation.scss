@@ -1,9 +1,7 @@
 .main-navigation {
-	display: block;
 	width: 100%;
 
 	ul {
-		display: none;
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
@@ -53,7 +51,7 @@
 
 /* Small menu. */
 .menu-toggle,
-.main-navigation.toggled ul {
+.main-navigation.active ul {
 	display: block;
 }
 
@@ -67,27 +65,45 @@
 	}
 }
 
-@include mobile-only {
-	.off-screen-mobile {
-		position: fixed;
-		top: 0;
-		right: -85%;
-		height: 100vh;
-		width: 85%;
-		background-color: $color__background-header;
-		transition: right .5s;
-		z-index: 10;
-		align-items: center;
-		padding: 15vh 0 0;
+.site-header {
+	@include mobile-only {
+		display: flex;
+		justify-content: space-between;
 
-		a {
-			font-size: 1.5rem;
-		}
+		.container.off-screen-mobile {
+			position: fixed;
+			top: 0;
+			right: -85%;
+			height: 100vh;
+			width: 85%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
 
-		&.toggled {
-			right: 0;
+			background-color: $color__background-header;
+			transition: right .5s;
+			z-index: 10;
+			align-items: center;
+			padding: 40vh 0 0;
+
+			&.active {
+				right: 0;
+			}
+
+			.menu li {
+				padding-bottom: 1rem;
+				text-align: center;
+			}
+			
+			.menu,
+			.social-media-icons {
+				a {
+					font-size: 1.2rem;
+				}
+			}
 		}
 	}
+
 }
 
 .menu-toggle {
@@ -97,6 +113,11 @@
 	height: 50px;
 	padding: 1rem;
 	z-index: 20;
+
+	&:hover, &:active, &:focus {
+		background: none;
+		box-shadow: none
+	}
 
 	.ham-bar {
 		@include absoluteXYCenter;
@@ -115,7 +136,7 @@
 		}
 	}
 
-	&.toggled {
+	&.active {
 		.ham-bar {
 
 			&.top,

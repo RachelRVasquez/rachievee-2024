@@ -503,6 +503,10 @@ body {
 	background: #222731;
 }
 
+body.mobile-menu-active {
+	overflow: hidden;
+}
+
 button,
 input[type="button"],
 input[type="reset"],
@@ -714,12 +718,10 @@ table {
 /* Navigation
 --------------------------------------------- */
 .main-navigation {
-	display: block;
 	width: 100%;
 }
 
 .main-navigation ul {
-	display: none;
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
@@ -765,7 +767,7 @@ table {
 
 /* Small menu. */
 .menu-toggle,
-.main-navigation.toggled ul {
+.main-navigation.active ul {
 	display: block;
 }
 
@@ -782,25 +784,39 @@ table {
 
 @media (max-width: 767px) {
 
-	.off-screen-mobile {
+	.site-header {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.site-header .container.off-screen-mobile {
 		position: fixed;
 		top: 0;
 		right: -85%;
 		height: 100vh;
 		width: 85%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
 		background-color: #000611;
 		transition: right 0.5s;
 		z-index: 10;
 		align-items: center;
-		padding: 15vh 0 0;
+		padding: 40vh 0 0;
 	}
 
-	.off-screen-mobile a {
-		font-size: 1.5rem;
-	}
-
-	.off-screen-mobile.toggled {
+	.site-header .container.off-screen-mobile.active {
 		right: 0;
+	}
+
+	.site-header .container.off-screen-mobile .menu li {
+		padding-bottom: 1rem;
+		text-align: center;
+	}
+
+	.site-header .container.off-screen-mobile .menu a,
+	.site-header .container.off-screen-mobile .social-media-icons a {
+		font-size: 1.2rem;
 	}
 }
 
@@ -814,6 +830,13 @@ table {
 	height: 50px;
 	padding: 1rem;
 	z-index: 20;
+}
+
+.menu-toggle:hover,
+.menu-toggle:active,
+.menu-toggle:focus {
+	background: none;
+	box-shadow: none;
 }
 
 .menu-toggle .ham-bar {
@@ -836,20 +859,20 @@ table {
 	top: 75%;
 }
 
-.menu-toggle.toggled .ham-bar.top,
-.menu-toggle.toggled .ham-bar.bottom {
+.menu-toggle.active .ham-bar.top,
+.menu-toggle.active .ham-bar.bottom {
 	top: 50%;
 }
 
-.menu-toggle.toggled .ham-bar.top {
+.menu-toggle.active .ham-bar.top {
 	transform: translate(-50%, -50%) rotate(-315deg);
 }
 
-.menu-toggle.toggled .ham-bar.middle {
+.menu-toggle.active .ham-bar.middle {
 	opacity: 0;
 }
 
-.menu-toggle.toggled .ham-bar.bottom {
+.menu-toggle.active .ham-bar.bottom {
 	transform: translate(-50%, -50%) rotate(-225deg);
 }
 
@@ -944,11 +967,14 @@ table {
 	margin-bottom: 6rem;
 }
 
-.post .entry-title,
-.post .entry-meta,
-.post .entry-content,
-.post .entry-footer {
-	padding: 0 1rem;
+@media (min-width: 768px) {
+
+	.post .entry-title,
+	.post .entry-meta,
+	.post .entry-content,
+	.post .entry-footer {
+		padding: 0 1rem;
+	}
 }
 
 .post .entry-meta .comments-link .comments-icon {
@@ -1329,6 +1355,8 @@ table {
 }
 
 /* Header ---------------- */
+
+/* check navigation.scss for mobile, will combine eventually */
 .site-header {
 	background: #222731;
 	background: linear-gradient(0deg, rgb(34, 39, 49) 0%, rgb(0, 6, 17) 45%);

@@ -5,59 +5,39 @@
  * navigation support for dropdown menus.
  */
 ( function() {
-	const siteNavigation = document.getElementById( 'site-header' );
-
-	// Return early if the navigation doesn't exist.
-	if ( ! siteNavigation ) {
-		return;
-	}
-
-	const button = siteNavigation.getElementsByTagName( 'button' )[ 0 ];
+	const menuToggleBtn = document.getElementById('menu-toggle');
 
 	// Return early if the button doesn't exist.
-	if ( 'undefined' === typeof button ) {
+	if ( 'undefined' === typeof menuToggleBtn ) {
 		return;
 	}
 
-	const menu = siteNavigation.getElementsByTagName( 'ul' )[ 0 ];
+	const mobileMenu = document.getElementById('mobile-menu');
 
 	// Hide menu toggle button if menu is empty and return early.
-	if ( 'undefined' === typeof menu ) {
-		button.style.display = 'none';
+	if ( 'undefined' === typeof mobileMenu ) {
+		menuToggleBtn.style.display = 'none';
 		return;
 	}
 
-	if ( ! menu.classList.contains( 'nav-menu' ) ) {
-		menu.classList.add( 'nav-menu' );
-	}
+	// Toggle the .active class and the aria-expanded value each time the button is clicked.
+	menuToggleBtn.addEventListener( 'click', () => {
+		menuToggleBtn.classList.toggle( 'active' );
+		mobileMenu.classList.toggle( 'active' );
+		document.body.classList.toggle('mobile-menu-active');
 
-	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
-	button.addEventListener( 'click', function() {
-		button.classList.toggle( 'toggled' );
-		siteNavigation.classList.toggle( 'toggled' );
-
-		if ( button.getAttribute( 'aria-expanded' ) === 'true' ) {
-			button.setAttribute( 'aria-expanded', 'false' );
+		if ( menuToggleBtn.getAttribute( 'aria-expanded' ) === 'true' ) {
+			menuToggleBtn.setAttribute( 'aria-expanded', 'false' );
 		} else {
-			button.setAttribute( 'aria-expanded', 'true' );
-		}
-	} );
-
-	// Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
-	document.addEventListener( 'click', function( event ) {
-		const isClickInside = siteNavigation.contains( event.target );
-
-		if ( ! isClickInside ) {
-			siteNavigation.classList.remove( 'toggled' );
-			button.setAttribute( 'aria-expanded', 'false' );
+			menuToggleBtn.setAttribute( 'aria-expanded', 'true' );
 		}
 	} );
 
 	// Get all the link elements within the menu.
-	const links = menu.getElementsByTagName( 'a' );
+	const links = mobileMenu.getElementsByTagName( 'a' );
 
 	// Get all the link elements with children within the menu.
-	const linksWithChildren = menu.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
+	const linksWithChildren = mobileMenu.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
 
 	// Toggle focus each time a menu link is focused or blurred.
 	for ( const link of links ) {
@@ -97,4 +77,21 @@
 			menuItem.classList.toggle( 'focus' );
 		}
 	}
+
+	const skipLink = document.querySelector('.skip-link');
+
+	if ( 'undefined' === typeof skipLink ) {
+		return;
+	}
+
+	//Skip link is the next focus point after header menus so if the mobile menu is open, close it on focus
+	skipLink.addEventListener( 'focus', function( event ) {
+		console.log('testing this');
+		if ( document.body.classList.contains('mobile-menu-active')) {
+			mobileMenu.classList.remove( 'active' );
+			menuToggleBtn.classList.remove( 'active' );
+			menuToggleBtn.setAttribute( 'aria-expanded', 'false' );
+			document.body.classList.remove('mobile-menu-active');
+		}
+	} );
 }() );
