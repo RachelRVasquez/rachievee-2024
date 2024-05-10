@@ -675,25 +675,17 @@ table {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
-.site {
+.site-grid {
 	display: grid;
 	grid-template-columns: 25% auto;
-	grid-template-areas: "header header" "blurb blurb" "main main" "sidebar sidebar" "footer footer";
+	grid-template-areas: "main main" "sidebar sidebar";
 }
 
 @media (min-width: 768px) {
 
-	.site {
-		grid-template-areas: "header header" "blurb blurb" "sidebar main" "footer footer";
+	.site-grid {
+		grid-template-areas: "sidebar main";
 	}
-}
-
-.site-header {
-	grid-area: header;
-}
-
-.site-homepage-hero {
-	grid-area: blurb;
 }
 
 .site-main {
@@ -703,12 +695,20 @@ table {
 	/* Resolves issue with <pre> elements forcing full width. */
 }
 
-.widget-area {
-	grid-area: sidebar;
+.site-grid {
+	max-width: 1440px;
+	margin: auto;
 }
 
-.site-footer {
-	grid-area: footer;
+@media (max-width: 767px) {
+
+	.site-grid {
+		padding: 0 1rem;
+	}
+}
+
+.widget-area {
+	grid-area: sidebar;
 }
 
 /*--------------------------------------------------------------
@@ -1324,7 +1324,16 @@ table {
 --------------------------------------------- */
 
 /* Global Layout ---------------- */
-.site-main,
+.site .skip-link {
+	color: #06142e;
+}
+
+.site .skip-link:hover,
+.site .skip-link:focus,
+.site .skip-link:active {
+	color: #06142e;
+}
+
 .widget-area,
 .site-header,
 .site-footer {
@@ -1334,10 +1343,6 @@ table {
 .site-main,
 .widget-area {
 	margin-top: 2rem;
-}
-
-.skip-link {
-	color: #06142e;
 }
 
 @media (min-width: 768px) {

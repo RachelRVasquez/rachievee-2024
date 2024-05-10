@@ -1,28 +1,14 @@
-.site {
+.site-grid {
 	display: grid;
 	grid-template-columns: ($size__site-sidebar) auto;
 	grid-template-areas:
-		"header header"
-		"blurb blurb"
 		"main main"
-		"sidebar sidebar"
-		"footer footer";
+		"sidebar sidebar";
 
 	@include tablet-up {
 		grid-template-areas:
-			"header header"
-			"blurb blurb"
-			"sidebar main"
-			"footer footer";
+			"sidebar main";
 	}
-}
-
-.site-header {
-	grid-area: header;
-}
-
-.site-homepage-hero {
-	grid-area: blurb;
 }
 
 .site-main {
@@ -31,10 +17,15 @@
 	/* Resolves issue with <pre> elements forcing full width. */
 }
 
-.widget-area {
-	grid-area: sidebar;
+.site-grid {
+	max-width: $size__site-width;
+	margin: auto;
+
+	@include mobile-only {
+		padding: 0 1rem;
+	}
 }
 
-.site-footer {
-	grid-area: footer;
+.widget-area {
+	grid-area: sidebar;
 }
