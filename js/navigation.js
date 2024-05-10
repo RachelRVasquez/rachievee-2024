@@ -5,7 +5,7 @@
  * navigation support for dropdown menus.
  */
 ( function() {
-	const siteNavigation = document.getElementById( 'site-navigation' );
+	const siteNavigation = document.getElementById( 'site-header' );
 
 	// Return early if the navigation doesn't exist.
 	if ( ! siteNavigation ) {
@@ -33,6 +33,7 @@
 
 	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
 	button.addEventListener( 'click', function() {
+		button.classList.toggle( 'toggled' );
 		siteNavigation.classList.toggle( 'toggled' );
 
 		if ( button.getAttribute( 'aria-expanded' ) === 'true' ) {

@@ -25,7 +25,11 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		padding: 8rem 0 2rem;
+		padding: 15vh 0 2rem;
+
+		@include tablet-up {
+			padding-top: 30vh;
+		}
 	}
 
 

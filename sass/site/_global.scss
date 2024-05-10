@@ -16,3 +16,15 @@
 	color: $color__text-secondary;
 }
 
+
+.desktop-hidden {
+	@include tablet-up {
+		display: none;
+	}
+}
+
+.mobile-hidden {
+	@include mobile-only {
+		display: none;
+	}
+}
