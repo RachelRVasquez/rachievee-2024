@@ -14,7 +14,7 @@
 
 get_header();
 ?>
-
+<div class="site-grid">
 	<main id="primary" class="site-main">
 
 		<?php
@@ -33,6 +33,6 @@ get_header();
 
 	</main><!-- #main -->
 
-<?php
-get_sidebar();
-get_footer();
+	<?php get_sidebar(); ?>
+</div><!-- .site-grid -->
+<?php get_footer();
