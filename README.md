@@ -37,3 +37,7 @@ CLI commands tailored for WordPress theme development :
 - `npm run lint:scss` : checks all SASS files against [CSS Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/).
 - `npm run lint:js` : checks all JavaScript files against [JavaScript Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/).
 - `npm run bundle` : generates a .zip archive for distribution, excluding development and system files.
+
+### Workflow
+
+The `npm bundle` command is what creates the final WordPress theme that is then activated on a WordPress install. It removes files and dependencies used during development. I avoided adding dependencies that couldn't be removed during the final bundle. My theme uses the [Carbon Fields plugin](https://carbonfields.net/docs/carbon-fields-plugin-quickstart/) for my homepage "intro" blurb and to make the content in my footer dynamic. I realize this is not standard for a "publicly available" WordPress theme but since it's my personal theme, I decided to make use of that tool for custom fields.
