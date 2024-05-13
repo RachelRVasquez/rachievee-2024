@@ -1555,22 +1555,30 @@ table {
 }
 
 /* Sidebar ---------------- */
-.wp-block-categories {
+.wp-block-categories ul,
+.widget_categories ul,
+.widget_top-posts ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-.wp-block-categories li {
+.wp-block-categories ul li,
+.widget_categories ul li,
+.widget_top-posts ul li {
 	border-top: 1px solid #373f4f;
 	padding: 0.8rem 0;
 }
 
-.wp-block-categories li:first-child {
+.wp-block-categories ul li:first-child,
+.widget_categories ul li:first-child,
+.widget_top-posts ul li:first-child {
 	border: none;
 }
 
-.wp-block-categories a {
+.wp-block-categories a,
+.widget_categories a,
+.widget_top-posts a {
 	text-decoration: none;
 	letter-spacing: 1px;
 	color: #aff9ff;
@@ -1584,7 +1592,13 @@ table {
 
 .wp-block-categories a:hover,
 .wp-block-categories a:active,
-.wp-block-categories a:focus {
+.wp-block-categories a:focus,
+.widget_categories a:hover,
+.widget_categories a:active,
+.widget_categories a:focus,
+.widget_top-posts a:hover,
+.widget_top-posts a:active,
+.widget_top-posts a:focus {
 	background-size: 100% 1px;
 }
 
@@ -1592,22 +1606,35 @@ table {
 	display: block;
 }
 
-.widget_search .wp-block-search__label {
-	position: absolute;
-	clip: rect(1px, 1px, 1px, 1px);
-	overflow: hidden;
-	height: 1px;
-	width: 1px;
-}
-
 .widget_search input[type="search"],
-.widget_search button {
+.widget_search input[type="submit"] {
 	display: block;
 	width: 100%;
 }
 
-.widget_search button {
+.widget_search input[type="submit"] {
 	margin: 1rem 0 0;
+}
+
+.wp-block-button__link {
+	border: 1px solid;
+	border: none;
+	border-radius: 3px;
+	background: #ff9972;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #06142e;
+	line-height: 1;
+	padding: 0.6em 1em;
+}
+
+.wp-block-button__link:hover,
+.wp-block-button__link:active,
+.wp-block-button__link:focus {
+	transition: all 0.3s ease-in-out;
+	background: #ff743f;
+	box-shadow: 1px 2px 20px #ff9972;
 }
 
 /* Homepage Blurb ---------------- */
