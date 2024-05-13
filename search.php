@@ -37,7 +37,12 @@ get_header();
 
 			endwhile;
 
-			the_posts_navigation();
+			the_posts_navigation(
+				array(
+					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'rachievee-2024' ) . '</span> <span class="nav-title">%title</span>',
+					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'rachievee-2024' ) . '</span> <span class="nav-title">%title</span>',
+				)
+			);
 
 		else :
 

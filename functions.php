@@ -8,9 +8,6 @@
  * @package RachieVee_2024
  */
 
-use Carbon_Fields\Container;
-use Carbon_Fields\Field;
-
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
 	define('_S_VERSION', '1.0.0');
@@ -55,7 +52,6 @@ function rachievee_2024_setup()
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'rachievee-2024'), //main menu
-			// 'menu-2' => esc_html__('Secondary', 'rachievee-2024'), //social icons header
 		)
 	);
 
@@ -190,49 +186,44 @@ if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
+
 /**
  * Carbon Fields
  */
 add_action('carbon_fields_register_fields', 'crb_attach_theme_options');
 
-function crb_attach_theme_options()
-{
+function crb_attach_theme_options() {
 	Container::make('theme_options', __('Theme Options', 'rachievee-2024'))
 		->add_fields(array(
 			Field::make('text', 'homepage_hero_title', 'Hero Title'),
 			Field::make('text', 'homepage_hero_subtitle', 'Hero Subtitle'),
 			Field::make('rich_text', 'homepage_hero_desc', 'Hero Description'),
+			Field::make('rich_text', 'footer_github', 'Footer Link to Github'),
 		));
 }
 
-add_action('after_setup_theme', 'crb_load');
+//@todo: Function that I'm testing for future blog post
+// //filter users by role in delete user dropdown
+// add_action('pre_user_query',  'filter_users_by_isda_when_deleting');
 
-function crb_load()
-{
-	require_once('vendor/autoload.php');
-	\Carbon_Fields\Carbon_Fields::boot();
-}
+// function filter_users_by_isda_when_deleting( $query )
+// {
+// 	if ( function_exists( 'get_current_screen' ) ) {
+// 		$current_screen = get_current_screen();
 
+// 		if ( $current_screen->id === 'users' && isset( $_GET['action'] ) && $_GET['action'] === 'delete' ) {
+// 			global $wpdb;
+// 			$selected_user_id = $_GET['user'];
+// 			$query->query_where = str_replace('WHERE 1=1 AND wp_users.ID NOT IN (' . $selected_user_id . ')', "WHERE 1=1 AND {$wpdb->users}.ID IN (
+// 					SELECT DISTINCT wpu.ID FROM {$wpdb->users} wpu
+// 					JOIN {$wpdb->usermeta} wpum
+// 					ON (wpu.ID = wpum.user_id)
+// 						WHERE wpum.meta_key = 'wp_capabilities' AND wpum.meta_value LIKE '%administrator%'
+// 						AND ( wpu.ID NOT IN ($selected_user_id )) )", $query->query_where);
+// 		}
+// 	}
 
-//filter users by role in delete user dropdown
-add_action('pre_user_query',  'filter_users_by_isda_when_deleting');
-
-function filter_users_by_isda_when_deleting( $query )
-{
-	if ( function_exists( 'get_current_screen' ) ) {
-		$current_screen = get_current_screen();
-
-		if ( $current_screen->id === 'users' && isset( $_GET['action'] ) && $_GET['action'] === 'delete' ) {
-			global $wpdb;
-			$selected_user_id = $_GET['user'];
-			$query->query_where = str_replace('WHERE 1=1 AND wp_users.ID NOT IN (' . $selected_user_id . ')', "WHERE 1=1 AND {$wpdb->users}.ID IN (
-					SELECT DISTINCT wpu.ID FROM {$wpdb->users} wpu
-					JOIN {$wpdb->usermeta} wpum
-					ON (wpu.ID = wpum.user_id)
-						WHERE wpum.meta_key = 'wp_capabilities' AND wpum.meta_value LIKE '%administrator%'
-						AND ( wpu.ID NOT IN ($selected_user_id )) )", $query->query_where);
-		}
-	}
-
-	return $query;
-}
+// 	return $query;
+// }

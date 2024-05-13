@@ -23,10 +23,10 @@
 	</div>
 	<div class="container">
 		<div class="site-info">
-			<a href="<?php echo esc_url(__('https://github.com/RachelRVasquez/', 'rachievee-2024')); ?>">
-				<?php esc_html_e('Source code available on Github', 'rachievee-2024') ?>
-				<i class="fab fa-github" aria-hidden="true" title="github"></i>
-			</a>
+			<?php $fetch_footer_github = get_option('_footer_github') ?: ''; 
+			if ( isset( $fetch_footer_github ) && !empty( $fetch_footer_github ) ) {
+				echo wpautop( $fetch_footer_github );
+			} ?>
 		</div><!-- .site-info -->
 		<?php /* @todo: Create separate menu */
 		wp_nav_menu(
