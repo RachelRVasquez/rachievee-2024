@@ -16,6 +16,12 @@
 	padding: 0 1rem;
 }
 
+.site-main {
+	@include tablet-up {
+		margin-left: 2rem;
+	}
+}
+
 .site-main,
 .widget-area {
 	margin-top: 2rem;

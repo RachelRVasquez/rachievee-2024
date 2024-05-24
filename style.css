@@ -52,6 +52,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 /* Colors --- */
 
+/* Light Theme --- */
+
 /* Columns --- */
 
 /* Structure --- */
@@ -1340,6 +1342,13 @@ table {
 	padding: 0 1rem;
 }
 
+@media (min-width: 768px) {
+
+	.site-main {
+		margin-left: 2rem;
+	}
+}
+
 .site-main,
 .widget-area {
 	margin-top: 2rem;
@@ -1627,6 +1636,7 @@ table {
 	color: #06142e;
 	line-height: 1;
 	padding: 0.6em 1em;
+	width: 100%;
 }
 
 .wp-block-button__link:hover,

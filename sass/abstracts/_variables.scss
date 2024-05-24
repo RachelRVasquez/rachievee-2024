@@ -15,7 +15,7 @@ $color__background-blockquote: #292f3b;
 $color__background-ins: #fff9c0;
 $color__background-article: $color__background-body;
 
-$color__text-screen: #6DC4CB;
+$color__text-screen: #06142E;
 $color__text-input: #333;
 $color__text-input-focus: #111;
 
@@ -43,6 +43,46 @@ $color__border-button-hover: darken( $color__border-button, 10% );
 
 $color__border-input: #ccc;
 $color__border-abbr: #666;
+
+/* Light Theme --- */
+
+$color__background-body: #222731;
+$color__background-screen: #FDF7F4;
+$color__background-header: #000611;
+$color__background-header2: $color__background-body;
+$color__background-footer: #1C7C82;
+
+$color__background-hr: darken( $color__background-body, 10%);
+$color__background-button: #FF9972;
+$color__background-pre: #FDF7F4;
+$color__text-pre: #06142E;
+$color__background-blockquote: #292f3b;
+
+$color__background-ins: #fff9c0;
+$color__background-article: $color__background-body;
+
+$color__text-screen: #6DC4CB;
+$color__text-input: #333;
+$color__text-input-focus: #111;
+
+$color__post-title: #aff9ff;
+$color__read-more: $color__post-title;
+
+$color__main-heading: #6DC4CB;
+$color__sub-heading: #C2D1F4;
+$color__homepage-blurb-title: #6DC4CB;
+$color__homepage-blurb-text: #FDF7F4;
+
+$color__link: #FF9972;
+$color__link-meta: #C2D1F4;
+$color__link-meta-hover: #FF9972;
+
+$color__text-main: #FDF7F4;
+$color__text-secondary: #06142E;
+
+$color__border-header: darken( $color__background-body, 10%);
+$color__border-button: #FF9972;
+
 
 /* Columns --- */
 
